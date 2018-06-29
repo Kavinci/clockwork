@@ -11,7 +11,7 @@ using System;
 namespace Clockwork.API.Migrations
 {
     [DbContext(typeof(ClockworkContext))]
-    [Migration("20171207214527_InitialCreate")]
+    [Migration("20180629061448_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,11 @@ namespace Clockwork.API.Migrations
 
                     b.Property<string>("ClientIp");
 
-                    b.Property<DateTime>("Time");
+                    b.Property<DateTime>("LocalTime");
+
+                    b.Property<DateTime>("ServerTime");
+
+                    b.Property<double>("UTCOffset");
 
                     b.Property<DateTime>("UTCTime");
 

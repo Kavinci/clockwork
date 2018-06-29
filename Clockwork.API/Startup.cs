@@ -23,7 +23,11 @@ namespace Clockwork.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(options => options.AddPolicy("GetCurrentTime", builder => 
+                builder.WithOrigins("http://localhost:51640")
+                .WithMethods("get")
+                .AllowAnyHeader()
+                .AllowCredentials()));
             services.AddMvc();
         }
 
@@ -34,12 +38,9 @@ namespace Clockwork.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+            
             app.UseMvc();
+            app.UseCors("GetCurrentTime");
         }
     }
 }

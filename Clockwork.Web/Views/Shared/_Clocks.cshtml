@@ -1,0 +1,72 @@
+﻿<header><link rel="stylesheet" href="~/Content/CSS/ClockStyle.css"></header>
+<div class="clocks-container">
+    <div class="local-clockbox">
+        <svg id="local-clock" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+            <g id="local-face">
+                <circle class="circle" cx="300" cy="300" r="253.9" />
+                <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6" />
+                <circle class="mid-circle" cx="300" cy="300" r="16.2" />
+            </g>
+            <g id="local-hour">
+                <path class="hour-arm" d="M300.5 298V142" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+            <g id="local-minute">
+                <path class="minute-arm" d="M300.5 298V67" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+            <g id="local-second">
+                <path class="second-arm" d="M300.5 350V55" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+        </svg>
+    </div>
+    <div class="server-clockbox">
+        <svg id="server-clock" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+            <g id="server-face">
+                <circle class="circle" cx="300" cy="300" r="253.9" />
+                <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6" />
+                <circle class="mid-circle" cx="300" cy="300" r="16.2" />
+            </g>
+            <g id="server-hour">
+                <path class="hour-arm" d="M300.5 298V142" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+            <g id="server-minute">
+                <path class="minute-arm" d="M300.5 298V67" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+            <g id="server-second">
+                <path class="second-arm" d="M300.5 350V55" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+        </svg>
+    </div>
+    <div class="utc-clockbox">
+        <svg id="utc-clock" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+            <g id="utc-face">
+                <circle class="circle" cx="300" cy="300" r="253.9" />
+                <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6" />
+                <circle class="mid-circle" cx="300" cy="300" r="16.2" />
+            </g>
+            <g id="utc-hour">
+                <path class="hour-arm" d="M300.5 298V142" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+            <g id="utc-minute">
+                <path class="minute-arm" d="M300.5 298V67" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+            <g id="utc-second">
+                <path class="second-arm" d="M300.5 350V55" />
+                <circle class="sizing-box" cx="300" cy="300" r="253.9" />
+            </g>
+        </svg>
+    </div>
+    
+</div>
+<div>
+    <div>Local Time: <script>Date.now()</script></div>
+    <div>Server Time: @DateTime.Now</div>
+    <div>UTC Time: @DateTime.UtcNow</div>
+</div>

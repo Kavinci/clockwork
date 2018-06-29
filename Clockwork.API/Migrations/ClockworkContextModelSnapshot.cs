@@ -26,7 +26,11 @@ namespace Clockwork.API.Migrations
 
                     b.Property<string>("ClientIp");
 
-                    b.Property<DateTime>("Time");
+                    b.Property<DateTime>("LocalTime");
+
+                    b.Property<DateTime>("ServerTime");
+
+                    b.Property<double>("UTCOffset");
 
                     b.Property<DateTime>("UTCTime");
 

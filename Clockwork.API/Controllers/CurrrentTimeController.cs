@@ -1,6 +1,12 @@
 ﻿using System;
+using System.Net.Http;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
+using Newtonsoft.Json;
 using Clockwork.API.Models;
+using Clockwork.API.Common;
+
 
 namespace Clockwork.API.Controllers
 {
@@ -8,18 +14,25 @@ namespace Clockwork.API.Controllers
     public class CurrentTimeController : Controller
     {
         // GET api/currenttime
-        [HttpGet]
-        public IActionResult Get()
+        [EnableCors("GetCurrentTime")]
+        [HttpGet("GetCurrentTime")]
+        [Produces("application/json")]
+        public IActionResult Get([FromBody] string body)
         {
+            var localDate = JsonConvert.DeserializeObject<List<LocalTime>>(body);
             var utcTime = DateTime.UtcNow;
             var serverTime = DateTime.Now;
             var ip = this.HttpContext.Connection.RemoteIpAddress.ToString();
+            DateTime local = new DateTime(localDate[0].year, localDate[0].month, localDate[0].day, localDate[0].hours, localDate[0].minutes, localDate[0].seconds);
+            TimeSpan offset = utcTime - local;
 
             var returnVal = new CurrentTimeQuery
             {
                 UTCTime = utcTime,
                 ClientIp = ip,
-                Time = serverTime
+                ServerTime = serverTime,
+                LocalTime = local,
+                UTCOffset = offset.TotalHours
             };
 
             using (var db = new ClockworkContext())
@@ -34,7 +47,6 @@ namespace Clockwork.API.Controllers
                     Console.WriteLine(" - {0}", CurrentTimeQuery.UTCTime);
                 }
             }
-
             return Ok(returnVal);
         }
     }
